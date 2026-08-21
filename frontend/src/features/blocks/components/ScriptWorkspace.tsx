@@ -77,16 +77,16 @@ export default function ScriptWorkspace() {
 
   // Keep fresh refs to prevent stale closure issues in global window listeners
   const viewportRef = useRef(viewport);
-  viewportRef.current = viewport;
+  useEffect(() => { viewportRef.current = viewport; }, [viewport]);
 
   const activeSpriteRef = useRef(activeSprite);
-  activeSpriteRef.current = activeSprite;
+  useEffect(() => { activeSpriteRef.current = activeSprite; }, [activeSprite]);
 
   const scratchBlocksRef = useRef(scratchBlocks);
-  scratchBlocksRef.current = scratchBlocks;
+  useEffect(() => { scratchBlocksRef.current = scratchBlocks; }, [scratchBlocks]);
 
   const dragStateRef = useRef(dragState);
-  dragStateRef.current = dragState;
+  useEffect(() => { dragStateRef.current = dragState; }, [dragState]);
 
   // ── Drag Start Handlers ──
 

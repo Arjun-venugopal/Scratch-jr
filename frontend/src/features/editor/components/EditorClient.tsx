@@ -72,13 +72,13 @@ export default function EditorClient({ projectId }: { projectId: string }) {
 
   // Keep fresh refs for window event handlers
   const activeSpriteRef = useRef(activeSprite);
-  activeSpriteRef.current = activeSprite;
+  useEffect(() => { activeSpriteRef.current = activeSprite; }, [activeSprite]);
 
   const scratchBlocksRef = useRef(scratchBlocks);
-  scratchBlocksRef.current = scratchBlocks;
+  useEffect(() => { scratchBlocksRef.current = scratchBlocks; }, [scratchBlocks]);
 
   const dragStateRef = useRef(dragState);
-  dragStateRef.current = dragState;
+  useEffect(() => { dragStateRef.current = dragState; }, [dragState]);
 
   // ── Drag Start Handlers ──
 

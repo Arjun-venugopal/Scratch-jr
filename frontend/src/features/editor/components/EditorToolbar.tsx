@@ -12,10 +12,10 @@ import {
   Image as ImageIcon,
   Save,
   FolderOpen,
-  Mail,
-  Folder,
-  Globe,
+  LayoutDashboard,
+  LogOut,
   Bot,
+  Mail,
 } from 'lucide-react';
 import { useProjectStore } from '../../../store/useProjectStore';
 import api from '../../../lib/api';
@@ -117,6 +117,7 @@ export default function EditorToolbar({
         await api.put(`/projects/${projectId}`, { title: projectTitle, projectData: data });
       }
       showToast('Saved to Cloud! 🚀', 'success');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       if (err?.response?.status === 401) {
         showToast('Saved locally! Session expired, please log in again. 🔑', 'info');

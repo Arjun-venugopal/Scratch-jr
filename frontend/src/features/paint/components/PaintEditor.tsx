@@ -66,6 +66,20 @@ export default function PaintEditor({ spriteId, onClose }: PaintEditorProps) {
   const [historyIdx, setHistoryIdx] = useState(-1);
 
   // Initialize Canvas & Load Existing Sprite Artwork
+  const pushHistory = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    setHistory((prev) => {
+      const truncated = prev.slice(0, historyIdx + 1);
+      const newHistory = [...truncated, imageData].slice(-30);
+      return newHistory;
+    });
+    setHistoryIdx((prev) => Math.min(prev + 1, 29));
+  }, [historyIdx]);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -97,20 +111,6 @@ export default function PaintEditor({ spriteId, onClose }: PaintEditorProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const pushHistory = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    setHistory((prev) => {
-      const truncated = prev.slice(0, historyIdx + 1);
-      const newHistory = [...truncated, imageData].slice(-30);
-      return newHistory;
-    });
-    setHistoryIdx((prev) => Math.min(prev + 1, 29));
-  }, [historyIdx]);
 
   const handleUndo = useCallback(() => {
     if (historyIdx <= 0) return;

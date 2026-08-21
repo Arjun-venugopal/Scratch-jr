@@ -3,6 +3,7 @@
 import React from 'react';
 import { Plus, Trash2, Copy } from 'lucide-react';
 import { useProjectStore } from '../../../store/useProjectStore';
+import { useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SoundManager } from '../../audio/SoundManager';
 
@@ -16,7 +17,7 @@ export default function SceneTimeline() {
     pushHistory,
   } = useProjectStore();
 
-  const handleDuplicateScene = (sceneId: string, e: React.MouseEvent) => {
+  const handleDuplicateScene = useCallback((sceneId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     SoundManager.playClick();
     pushHistory();
@@ -35,7 +36,7 @@ export default function SceneTimeline() {
       scenes: [...state.scenes, duplicatedScene],
       activeSceneId: newSceneId,
     }));
-  };
+  }, [scenes, pushHistory]);
 
   return (
     <div className="h-20 sm:h-24 bg-amber-50/90 backdrop-blur border-t-2 sm:border-t-4 border-amber-200 flex items-center px-2 sm:px-4 gap-2 sm:gap-4 overflow-x-auto select-none shrink-0 shadow-inner">

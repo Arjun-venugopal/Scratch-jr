@@ -423,7 +423,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
         sprites: scene.sprites.map(s => {
           if (s.id !== spriteId || !s.scratchBlocks) return s;
           const blocks = { ...s.scratchBlocks };
-          let topLevels = (s.topLevelBlockIds || []).filter(id => id !== draggedBlockId);
+          const topLevels = (s.topLevelBlockIds || []).filter(id => id !== draggedBlockId);
 
           const dragged = blocks[draggedBlockId];
           const target = blocks[snapTarget.targetBlockId];
@@ -636,6 +636,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
     return { projectId, projectTitle, scenes, activeSceneId };
   },
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   deserialize: (data: any) => {
     if (!data || !data.scenes) return;
     set({
