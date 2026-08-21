@@ -1,0 +1,59 @@
+--- ROOT WORKSPACE ---
+Dependencies & Build Tools:
+- turbo (Turborepo build system)
+- prettier (Code formatting)
+
+
+--- FRONTEND (Next.js App) ---
+Core Libraries:
+- next (React framework)
+- react / react-dom (UI library)
+- typescript (Language)
+
+State Management & Data:
+- zustand (Global state management)
+- axios (HTTP client for API requests)
+
+Rendering & Animations:
+- pixi.js (WebGL 2D rendering engine)
+- @pixi/react (React bindings for PixiJS)
+- framer-motion (UI animation library)
+- canvas-confetti (Particle effects)
+
+Drag and Drop (Block Editor):
+- @dnd-kit/core
+- @dnd-kit/modifiers
+- @dnd-kit/sortable
+- @dnd-kit/utilities
+
+Audio:
+- howler (Audio web API library)
+- use-sound (React hook for sounds)
+
+Styling & UI Utilities:
+- tailwindcss / @tailwindcss/postcss (CSS framework)
+- tailwind-merge (Utility for merging tailwind classes)
+- clsx (Utility for constructing className strings)
+- lucide-react (Icon library)
+- uuid (Unique ID generation)
+
+Testing & Linting:
+- jest / ts-jest / @testing-library/react (Unit & component testing)
+- eslint / eslint-config-next (Linting)
+
+
+--- BACKEND (Express Server) ---
+Core Libraries:
+- express (Node.js web framework)
+- mongoose (MongoDB object modeling)
+- socket.io (Real-time bidirectional communication)
+- typescript (Language)
+
+Authentication & Security:
+- bcrypt (Password hashing)
+- jsonwebtoken (JWT generation and verification)
+- cors (Cross-Origin Resource Sharing)
+
+Utilities:
+- dotenv (Environment variable loading)
+- ts-node-dev (Development server with auto-restart)
